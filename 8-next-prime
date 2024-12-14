@@ -1,0 +1,25 @@
+public Integer nextPrime(Integer num) {
+    // Start from 2 if the input number is less than 2, as 2 is the smallest prime number
+    Integer i = (num < 2) ? 2 : num + 1;
+    Boolean isPrime = false;
+
+    while (!isPrime) {
+        isPrime = true; // Assume the number is prime
+
+        // Check if i is divisible by any number from 2 to sqrt(i)
+        for (Integer j = 2; j <= Math.sqrt(i); j++) {
+            if (Math.mod(i,j) == 0) {
+                isPrime = false; // i is divisible by j, so it's not prime
+                break;
+            }
+        }
+
+        // If i is prime, return it; otherwise, increment and check again
+        if (isPrime) {
+            return i;
+        } else {
+            i++; // Increment i and check the next number
+        }
+    }
+    return i; // This line should theoretically never be reached
+}
