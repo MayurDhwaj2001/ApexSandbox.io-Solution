@@ -1,0 +1,14 @@
+public String nameFromEmail(String email) {
+    // Extract the part before the '@' symbol
+    String namePart = email.split('@')[0];
+    
+    // Split the name part by the period (.)
+    List<String> names = namePart.split('\\.');
+    
+    // Capitalize both first and last names manually
+    String firstName = names[0].substring(0, 1).toUpperCase() + names[0].substring(1).toLowerCase();
+    String lastName = names[1].substring(0, 1).toUpperCase() + names[1].substring(1).toLowerCase();
+    
+    // Return the full name
+    return firstName + ' ' + lastName;
+}
