@@ -1,0 +1,28 @@
+public void createCourseAndClass(String name, String description) {
+
+    apxio__Course__c newCourse = new apxio__Course__c();
+    newCourse.Name = name;
+    newCourse.apxio__Course_Details__c = description;
+    
+    try{
+        insert newCourse;
+
+        apxio__Class__c newClass = new apxio__Class__c();
+
+        newClass.Name = name;
+        newClass.apxio__Description__c = description;
+        newClass.apxio__Course__c = newCourse.Id; // Link the Class record to the Course
+
+        try{
+            insert newClass;
+        }
+        catch(Exception e){
+            System.debug(e);
+        }
+
+    }   
+    catch(Exception e){
+        System.debug(e);
+    }
+   
+}
