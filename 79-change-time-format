@@ -1,0 +1,16 @@
+public String changeTimeFormat(String strTime) {
+    Integer hour = Integer.valueOf(strTime.substring(0, 2));  // Extract the hour part
+    String minute = strTime.substring(3, 5); // Extract the minute part
+
+    String period = (hour >= 12) ? 'PM' : 'AM';  // Determine AM/PM
+    if (hour == 0) {
+        hour = 12;  // Handle midnight case (00:xx becomes 12:xx AM)
+    } else if (hour > 12) {
+        hour -= 12;  // Convert hours greater than 12 to 12-hour format
+    }
+
+    // Format the hour part to ensure two digits if needed
+    String hourStr = (hour < 10) ? '0' + String.valueOf(hour) : String.valueOf(hour);
+
+    return hourStr + ':' + minute + ' ' + period;
+}
