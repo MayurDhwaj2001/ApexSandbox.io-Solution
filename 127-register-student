@@ -1,0 +1,29 @@
+public String registerStudent(String name, String phone, String email) {
+
+    apxio__Student__c stu = new apxio__Student__c();
+
+    stu.Name = name;
+    stu.apxio__Phone__c = phone;
+    stu.apxio__Email__c = email;
+
+    try{
+
+        insert stu;
+
+        List<apxio__Student__c> sList = [
+            SELECT apxio__Registration_Number__c
+            FROM apxio__Student__c 
+            WHERE Id = :stu.Id
+        ];
+
+        if (sList[0].apxio__Registration_Number__c != null) {
+            return sList[0].apxio__Registration_Number__c;
+        } else {
+            return 'Registration number not available.';
+        }
+    }
+    catch(Exception e){
+        System.debug(e);
+        return 'Registration number not available.';
+    }
+}
