@@ -1,0 +1,15 @@
+public Integer fibonacci(Integer n) {
+    Integer first=1,second=1,sum=0;
+
+    if (n==1||n==2){
+        return 1;
+    }
+    else{
+        for(Integer i=3;i<=n;i++){
+            sum=first+second;
+            first=second;
+            second=sum;
+        }
+    }
+    return sum;
+}
