@@ -10,7 +10,12 @@ public void createCourseAndClass(String name, String description) {
         apxio__Class__c newClass = new apxio__Class__c();
 
         newClass.Name = name;
-        newClass.apxio__Description__c = description;
+        if (description != null) {
+            newClass.apxio__Description__c = description.length() > 255 ? description.substring(0, 255) : description;
+        } 
+        else {
+            newClass.apxio__Description__c = '';
+        }
         newClass.apxio__Course__c = newCourse.Id; // Link the Class record to the Course
 
         try{
