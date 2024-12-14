@@ -1,0 +1,19 @@
+public Id insertCourse(String name, String details, Integer credits) {
+
+    apxio__Course__c newCorse = new apxio__Course__c();
+
+    newCorse.apxio__Course_Details__c=details;
+    newCorse.apxio__Credits__c=String.valueOf(credits);
+    newCorse.Name=name;
+
+    try{
+        insert newCorse;
+        return newCorse.Id;
+    }
+    catch(Exception e){
+        System.debug(e);
+        return null;
+    }
+
+
+}
