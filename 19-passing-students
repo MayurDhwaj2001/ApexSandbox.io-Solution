@@ -1,0 +1,14 @@
+public Boolean isPassed(Boolean passedExam, Boolean passedAssignments, Boolean passedProject) {
+
+    
+    Integer val = (passedExam ? 1 : 0) + (passedAssignments ? 1 : 0) + (passedProject ? 1 : 0);
+
+
+    if(val>=2){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
